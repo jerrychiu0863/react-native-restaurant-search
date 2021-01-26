@@ -11,7 +11,7 @@ const navigator = createStackNavigator(
   {
     initialRouteName: 'Search',
     defaultNavigationOptions: {
-      title: 'Business Search',
+      title: '攻擊Coin Master村莊',
     },
   }
 );
