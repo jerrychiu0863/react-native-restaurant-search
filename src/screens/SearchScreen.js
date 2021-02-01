@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
 // Components
 import SearchBar from '../components/SearchBar';
@@ -17,18 +17,25 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={{ height: 100 }}>
+    <>
       <SearchBar
         term={term}
         onTermChange={(newTerm) => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text style={{}}>{results.length} results</Text>
-      <ResultsList title="Cost Effective" results={filterResultsByPrice('$')} />
-      <ResultsList title="Bit Pricer" results={filterResultsByPrice('$$')} />
-      <ResultsList title="Big Spender" results={filterResultsByPrice('$$$')} />
-    </View>
+      <ScrollView>
+        <ResultsList
+          title="Cost Effective"
+          results={filterResultsByPrice('$')}
+        />
+        <ResultsList title="Bit Pricer" results={filterResultsByPrice('$$')} />
+        <ResultsList
+          title="Big Spender"
+          results={filterResultsByPrice('$$$')}
+        />
+      </ScrollView>
+    </>
   );
 };
 
